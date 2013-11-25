@@ -1,6 +1,6 @@
 # This script generates questions and answers randomly based on index.
 
-# Generate a 2 to 8 digit hexadecimal number
+# Generate a 2 to 4 digit hexadecimal number
 # The user must enter the answer in decimal.
 def generateRandomHexToDecimalQuestion
   random_value = (Random.rand * 65535).to_i
@@ -9,7 +9,19 @@ def generateRandomHexToDecimalQuestion
   if random_value.to_s == answer
     puts "Correct!"
   else
-    puts "Incorrect. The answer was #{random_value}."
+    puts "Incorrect. The answer is #{random_value}."
+  end
+end
+
+# Generate up to an 8 digit binary number to be converted to decimal.
+def generateRandomBinaryToDecimalQuestion
+  random_value = (Random.rand * 255).to_i
+  printf("What is %b in decimal? ", random_value);
+  answer = gets.chomp
+  if random_value.to_s == answer
+    puts "Correct!"
+  else
+    puts "Incorrect. The answer is #{random_value}."
   end
 end
 
@@ -27,6 +39,8 @@ loop do
   case index
   when "1"
     generateRandomHexToDecimalQuestion()
+  when "2"
+    generateRandomBinaryToDecimalQuestion()
   else
     puts "Invalid index."
   end
